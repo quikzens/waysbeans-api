@@ -1,0 +1,6 @@
+node_modules
+.prettierignore
+.prettierrc.json
+.env
+todo.md
+uploads
