@@ -14,5 +14,5 @@ app.use('/api/v1', router)
 app.use('/uploads', express.static('uploads'))
 
 app.listen(PORT, () => {
-  console.log(`WaysBeans API | erver is running on port: ${PORT}`)
+  console.log(`WaysBeans API | server is running on port: ${PORT}`)
 })
