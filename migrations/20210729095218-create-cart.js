@@ -10,10 +10,10 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4,
       },
       productId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       transactionId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       orderQuantity: {
         type: Sequelize.INTEGER,

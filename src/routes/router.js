@@ -12,12 +12,19 @@ const {
   addTransaction,
   getMyTransactions,
   getTransactions,
+  approveTransaction,
+  cancelTransaction,
+  addCart,
 } = require('../controllers/transactions')
 const {
   getProducts,
   getProduct,
   addProduct,
 } = require('../controllers/products')
+
+// middlewares
+const { auth } = require('../middlewares/auth')
+const { uploadFile } = require('../middlewares/uploadFile')
 
 const router = Router()
 
@@ -26,24 +33,30 @@ router.post('/login', login)
 // register
 router.post('/register', register)
 // get my profile
-router.post('/my-profile', getMyProfile)
+router.get('/my-profile', auth, getMyProfile)
 // update avatar
-router.post('/avatar', updateAvatar)
+router.patch('/avatar', auth, uploadFile('avatar'), updateAvatar)
 // update profile image
-router.post('/profile', updateProfileImage)
+router.patch('/profile', auth, uploadFile('profile'), updateProfileImage)
 
 // get all products
-router.post('/products', getProducts)
+router.get('/products', getProducts)
 // get detail product
-router.post('/product/:id', getProduct)
+router.get('/product/:id', getProduct)
 // add product
-router.post('/product', addProduct)
+router.post('/product', auth, uploadFile('photo'), addProduct)
 
 // add transaction
-router.post('/transaction', addTransaction)
+router.post('/transaction', auth, uploadFile('attachment'), addTransaction)
 // get my transactions
-router.post('/my-transactions', getMyTransactions)
+router.get('/my-transactions', auth, getMyTransactions)
 // get all transactions
-router.post('/transactions', getTransactions)
+router.get('/transactions', auth, getTransactions)
+// approve transaction
+router.patch('/approve-transaction', auth, approveTransaction)
+// cancel transaction
+router.patch('/cancel-transaction', auth, cancelTransaction)
+// add cart
+router.post('/cart', auth, addCart)
 
 module.exports = router

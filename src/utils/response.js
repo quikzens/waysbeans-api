@@ -8,7 +8,6 @@ const serverError = (res) => {
 const data = (res, data) => {
   res.status(200).send({
     status: 'success',
-    message: 'resources has successfully get',
     data,
   })
 }

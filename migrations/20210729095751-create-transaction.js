@@ -10,7 +10,7 @@ module.exports = {
         defaultValue: Sequelize.UUIDV4,
       },
       userId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       name: {
         type: Sequelize.STRING,

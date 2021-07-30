@@ -24,15 +24,20 @@ module.exports = (sequelize, DataTypes) => {
 
   Cart.init(
     {
-      _id: DataTypes.UUID,
-      productId: DataTypes.INTEGER,
-      transactionId: DataTypes.INTEGER,
+      _id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+      },
+      productId: DataTypes.STRING,
+      transactionId: DataTypes.STRING,
       orderQuantity: DataTypes.INTEGER,
       _createdAt: DataTypes.DATE,
       _updatedAt: DataTypes.DATE,
     },
     {
       sequelize,
+      id: false,
+      timestamps: false,
       modelName: 'Cart',
       tableName: 'carts',
     }

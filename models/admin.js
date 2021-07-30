@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
 
   Admin.init(
     {
-      _id: Sequelize.UUID,
+      _id: {
+        type: DataTypes.UUID,
+        primaryKey: true,
+      },
       fullname: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
@@ -27,6 +30,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
+      id: false,
+      timestamps: false,
       modelName: 'Admin',
       tableName: 'admin',
     }
