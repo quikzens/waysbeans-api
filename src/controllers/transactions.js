@@ -25,7 +25,7 @@ exports.addTransaction = async (req, res) => {
       email: joi.string().email().required(),
       phone: joi.string().required(),
       possCode: joi.string().required(),
-      address: joi.string().required(),
+      address: joi.string().max(250).required(),
       total: joi.number().required(),
     })
 
