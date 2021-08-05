@@ -1,6 +1,7 @@
 const { Product } = require('../../models')
 const send = require('../utils/response')
 const joi = require('joi')
+const { v4: uuidv4 } = require('uuid')
 
 const pathFile = process.env.PATH_FILE
 
@@ -95,6 +96,7 @@ exports.addProduct = async (req, res) => {
     }
 
     const product = await Product.create({
+      _id: uuidv4(),
       ...productData,
       photo,
       _createdAt: new Date(),

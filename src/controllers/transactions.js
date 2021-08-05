@@ -191,6 +191,8 @@ exports.getTransactions = async (req, res) => {
       attributes: {
         exclude: ['_createdAt', '_updatedAt', 'userId'],
       },
+      // order by created at, the newest transaction at the top
+      order: [['_createdAt', 'DESC']],
     })
 
     transactions = JSON.parse(JSON.stringify(transactions))

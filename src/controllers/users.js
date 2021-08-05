@@ -3,6 +3,7 @@ const send = require('../utils/response')
 const joi = require('joi')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const { v4: uuidv4 } = require('uuid')
 
 const secretKey = process.env.SECRET_KEY
 const pathFile = process.env.PATH_FILE
@@ -116,6 +117,7 @@ exports.register = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, hashStrenght)
 
     const user = await User.create({
+      _id: uuidv4(),
       ...userData,
       password: hashedPassword,
       _createdAt: new Date(),
