@@ -101,12 +101,12 @@ exports.getMyTransactions = async (req, res) => {
               model: Product,
               as: 'product',
               attributes: {
-                exclude: ['_createdAt', '_updatedAt'],
+                exclude: ['_updatedAt'],
               },
             },
           ],
           attributes: {
-            exclude: ['_createdAt', '_updatedAt', 'productId', 'transactionId'],
+            exclude: ['_updatedAt', 'productId', 'transactionId'],
           },
         },
       ],
