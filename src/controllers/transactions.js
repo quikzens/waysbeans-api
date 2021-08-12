@@ -247,7 +247,7 @@ exports.approveTransaction = async (req, res) => {
     // make changes
     const transaction = {
       ...oldTransaction.dataValues,
-      status: 'Approved',
+      status: 'On The Way',
       _updatedAt: new Date(),
     }
 
@@ -259,6 +259,50 @@ exports.approveTransaction = async (req, res) => {
     })
 
     // get the new transaction after approved
+    const newTransaction = await Transaction.findOne({
+      where: { _id: id },
+    })
+
+    send.data(res, newTransaction)
+  } catch (err) {
+    console.log(err)
+    send.serverError(res)
+  }
+}
+
+exports.successTransaction = async (req, res) => {
+  const { id } = req.body
+
+  // only user allowed to do this action
+  const { role } = req
+  if (role !== 'user') {
+    return res.send({
+      status: 'failed',
+      message: "Sorry, you're not a user",
+    })
+  }
+
+  // get transaction before successed
+  const oldTransaction = await Transaction.findOne({
+    where: { _id: id },
+  })
+
+  try {
+    // make changes
+    const transaction = {
+      ...oldTransaction.dataValues,
+      status: 'Success',
+      _updatedAt: new Date(),
+    }
+
+    // update process
+    await Transaction.update(transaction, {
+      where: {
+        _id: id,
+      },
+    })
+
+    // get the new transaction after successed
     const newTransaction = await Transaction.findOne({
       where: { _id: id },
     })

@@ -14,6 +14,7 @@ const {
   getTransactions,
   approveTransaction,
   cancelTransaction,
+  successTransaction,
   addCart,
 } = require('../controllers/transactions')
 const {
@@ -56,6 +57,8 @@ router.get('/transactions', auth, getTransactions)
 router.patch('/approve-transaction', auth, approveTransaction)
 // cancel transaction
 router.patch('/cancel-transaction', auth, cancelTransaction)
+// success transaction
+router.patch('/success-transaction', auth, successTransaction)
 // add cart
 router.post('/cart', auth, addCart)
 
