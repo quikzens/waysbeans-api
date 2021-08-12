@@ -9,10 +9,10 @@ module.exports = {
         autoIncrement: true,
       },
       productId: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       transactionId: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
       },
       orderQuantity: {
         type: Sequelize.INTEGER,

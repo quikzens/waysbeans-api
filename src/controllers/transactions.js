@@ -72,6 +72,8 @@ exports.addCart = async (req, res) => {
 exports.getMyTransactions = async (req, res) => {
   const { userId } = req
 
+  console.log(userId)
+
   try {
     let transactions = await Transaction.findAll({
       where: {
