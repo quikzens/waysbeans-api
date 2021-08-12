@@ -38,7 +38,6 @@ exports.addTransaction = async (req, res) => {
     }
 
     const transaction = await Transaction.create({
-      _id: uuidv4(),
       ...transactionData,
       userId,
       attachment,

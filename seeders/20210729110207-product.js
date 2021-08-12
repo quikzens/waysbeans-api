@@ -1,5 +1,4 @@
 'use strict'
-const { v4: uuidv4 } = require('uuid')
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
@@ -7,7 +6,6 @@ module.exports = {
       'products',
       [
         {
-          _id: uuidv4(),
           name: 'ETHIOPIA Beans',
           price: 299900,
           description:
@@ -18,7 +16,6 @@ module.exports = {
           _updatedAt: new Date(),
         },
         {
-          _id: uuidv4(),
           name: 'RWANDA Beans',
           price: 109900,
           description:
@@ -29,7 +26,6 @@ module.exports = {
           _updatedAt: new Date(),
         },
         {
-          _id: uuidv4(),
           name: 'NICARAGUA Beans',
           price: 250900,
           description:

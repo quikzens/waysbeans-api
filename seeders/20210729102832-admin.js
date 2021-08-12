@@ -1,5 +1,4 @@
 'use strict'
-const { v4: uuidv4 } = require('uuid')
 const bcrypt = require('bcrypt')
 const hashStrenght = 10
 
@@ -9,7 +8,6 @@ module.exports = {
       'admin',
       [
         {
-          _id: uuidv4(),
           fullname: 'Spiderman',
           email: 'spiderman@gmail.com',
           password: await bcrypt.hash('spider1234', hashStrenght),
