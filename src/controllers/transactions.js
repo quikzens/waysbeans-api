@@ -1,7 +1,6 @@
 const { Transaction, User, Cart, Product } = require('../../models')
 const send = require('../utils/response')
 const joi = require('joi')
-const { v4: uuidv4 } = require('uuid')
 
 const pathFile = process.env.PATH_FILE
 
@@ -58,7 +57,6 @@ exports.addCart = async (req, res) => {
 
   try {
     const cart = await Cart.create({
-      _id: uuidv4(),
       ...cartData,
       _createdAt: new Date(),
       _updatedAt: new Date(),
